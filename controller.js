@@ -29,3 +29,19 @@ exports.createUsers = function(req, res) {
         }
     });
 };
+
+exports.updateUsers = function(req, res) {
+    var id = req.body.id;
+    var first_name = req.body.first_name;
+    var last_name = req.body.last_name;
+
+    connection.query("UPDATE person SET first_name = ?,last_name = ? WHERE id = ?",
+    [first_name, last_name, id],
+    function (error, rows, fields){
+        if (error){
+            console.log(error)
+        }else{
+            response.ok("berhasil merubah user!", res)
+        }
+    });
+};
