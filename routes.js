@@ -14,4 +14,10 @@ module.exports = function(app) {
 
     app.route("/users")
         .put(todoList.updateUsers);
+
+    app.route("/users")
+        .delete(todoList.deleteUsers);
+
+    app.route("/users/:id")
+        .get(todoList.findUsers);
 };

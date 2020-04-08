@@ -45,3 +45,27 @@ exports.updateUsers = function(req, res) {
         }
     });
 };
+
+exports.deleteUsers = function(req, res) {
+    var id = req.body.id;
+    connection.query("DELETE FROM person WHERE id = ?", [id],
+    function (error, rows, fields){
+        if(error){
+            console.log(error)
+        }else{
+            response.ok("berhasil hapus user!", res)
+        }
+    });
+};
+
+exports.findUsers = function(req, res) {
+    var id = req.params.id;
+    connection.query("SELECT * FROM person WHERE id = ?", [id],
+    function (error, rows, fields){
+        if(error){
+            console.log(error)
+        }else{
+            response.ok(rows, res)
+        }
+    });
+};
